@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "next": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "tailwindcss": "latest",
+    "chart.js": "latest",
+    "react-chartjs-2": "latest",
+    "axios": "latest"
+  }
+} 
