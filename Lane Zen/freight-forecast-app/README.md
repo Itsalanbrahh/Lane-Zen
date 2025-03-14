@@ -157,6 +157,39 @@ This is because Next.js 15.x no longer supports the `swcMinify` option. You can:
 1. Remove the `swcMinify` option from `next.config.js`
 2. Or downgrade to Next.js 13.x using: `npm install next@13.5.6`
 
+### Stylesheet Warnings
+
+If you see warnings about stylesheets in Next.js:
+
+```
+Do not add stylesheets using next/head (see <link rel="stylesheet"> tag)
+Use Document instead.
+```
+
+Move your stylesheet links from components using `next/head` to a custom `_document.js` file:
+
+```jsx
+// pages/_document.js
+import { Html, Head, Main, NextScript } from 'next/document'
+
+export default function Document() {
+  return (
+    <Html>
+      <Head>
+        <link 
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" 
+          rel="stylesheet"
+        />
+      </Head>
+      <body>
+        <Main />
+        <NextScript />
+      </body>
+    </Html>
+  )
+}
+```
+
 ### Supabase Connection Issues
 
 If you see errors about missing Supabase credentials:
@@ -178,6 +211,20 @@ If ports are already in use (e.g., 3000, 3001), you can specify a port manually:
 ```bash
 npm run dev -- -p 4000
 ```
+
+### Missing npm Scripts
+
+If you see errors like `Missing script: "dev"` when trying to run commands from the project root, make sure to:
+
+1. Navigate to the correct directory first:
+   ```bash
+   cd Lane\ Zen/freight-forecast-app/frontend
+   ```
+
+2. Then run the npm command:
+   ```bash
+   npm run dev
+   ```
 
 ## 📝 License
 
