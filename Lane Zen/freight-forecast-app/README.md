@@ -141,6 +141,44 @@ Additional documentation is available:
 - [API Documentation](./docs/API.md) (coming soon)
 - [Database Schema](./docs/SCHEMA.md) (coming soon)
 
+## 🔧 Troubleshooting
+
+### Next.js Configuration Issues
+
+If you encounter warnings about invalid Next.js configuration options:
+
+```
+⚠ Invalid next.config.js options detected: 
+⚠     Unrecognized key(s) in object: 'swcMinify'
+```
+
+This is because Next.js 15.x no longer supports the `swcMinify` option. You can:
+
+1. Remove the `swcMinify` option from `next.config.js`
+2. Or downgrade to Next.js 13.x using: `npm install next@13.5.6`
+
+### Supabase Connection Issues
+
+If you see errors about missing Supabase credentials:
+
+```
+Error: supabaseUrl is required.
+```
+
+Ensure your `.env.local` file is properly configured with:
+- `NEXT_PUBLIC_SUPABASE_URL`
+- `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+
+Alternatively, set `NEXT_PUBLIC_USE_MOCK_DATA=true` to use the application with mock data.
+
+### Port Already in Use
+
+If ports are already in use (e.g., 3000, 3001), you can specify a port manually:
+
+```bash
+npm run dev -- -p 4000
+```
+
 ## 📝 License
 
 Copyright © 2025 Lane Zen. All rights reserved. 
